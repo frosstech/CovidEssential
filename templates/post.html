@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    {% for key, value in data.items() %}
+        <div class="container">
+            <div class="panel panel-info">
+                <div class="panel-heading text-uppercase" style="background-color: #262626;"><h2 style="font-weight: bolder; color: #ffffff; text-align: center;">{{value["need"]}}</h2></div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                        <li class="list-group-item list-group-item-danger"><strong>Name:</strong> {{value["name"]}}</li>
+                        <li class="list-group-item list-group-item-danger"><strong>Location:</strong> {{value["latitude"]}}, {{value["longitude"]}}</li>
+                        <li class="list-group-item list-group-item-danger"><strong>Phone:</strong> {{value["phone"]}}</li>
+                    </ul>
+                </div>
+            </div>
+            
+            {% if session["usr"] %}
+                {% if session["email"] == value["author"] %}
+                <h3><span class="label label-danger"><a style="color: black; text-decoration: none;" href="/delete/{{key}}">Delete Post</a></span></h3>
+                {% endif %}
+            {% endif %}
+
+        </div>
+    {% endfor %}
+{% endblock %}

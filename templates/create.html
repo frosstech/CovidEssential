@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="well well-lg" style="background-color: #262626;">
+    <h3 style="color: red;" id="error">{{message}}</h3>
+    <form method="POST" action="/create" name="formName">
+        <div class="well well-sm"><h2>Create your Need</h2></div>
+        <div class="form-group">
+            <label for="title" style="color: #ffffff;">Name:</label>
+            <input type="text" class="form-control" name="name" placeholder="Name">
+        </div>
+        <div class="form-group">
+            <!--<label for="content" style="color: #ffffff;">Need:</label>
+            <textarea name="need" class="form-control" placeholder="Post your Need"></textarea> -->
+            <label for="title" style="color: #ffffff;">Need:</label><br>
+            <select class="browser-default custom-select" name="need" style="background-color: #ffffff; border-radius: 4px; font-weight: bolder; font-size: medium;">
+                <option selected>Select your need</option>
+                <option value="Water">Water</option>
+                <option value="Food">Food</option>
+                <option value="Medicine">Medicine</option>
+            </select>   
+        </div> 
+        <div class="form-group" id="loc">
+            <input name="latitude" class="form-control">  
+            <input name="longitude" class="form-control">  
+        </div>
+        <div class="form-group">
+            <label for="title" style="color: #ffffff;">Contact:</label>
+            <input type="text" class="form-control" name="contact" placeholder="Your phone number">
+        </div>
+        <button class="btn" type="submit" name="submit" value="create">Create</button>
+    </form>
+</div>
+<script>
+    var x = document.getElementById("error");
+    var l = document.getElementById("loc")
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                // Success function
+                showPosition, 
+                // Error function
+                null, 
+                // Options. See MDN for details.
+                {
+                    enableHighAccuracy: true,
+                    timeout: 5000,
+                    maximumAge: 0
+                });
+        } else { 
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+    
+    function showPosition(position) {
+        document.formName.latitude.value=position.coords.latitude
+        document.formName.longitude.value=position.coords.longitude
+    }
+
+    window.onload = function(){
+        getLocation();
+        l.style.display = "none";
+    }
+</script>
+
+
+{% endblock %}

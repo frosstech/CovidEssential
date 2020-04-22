@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+  
+<div class="well well-lg" style="background-color: #262626;">
+    <form method="POST" action="/login">
+          
+    {% if message %}
+        <!--<p class="error">{{message}}</p>-->
+        <div class="alert alert-danger">
+            <strong>Error!</strong> {{message}}
+        </div>
+    {% endif %}
+        <div class="well well-sm"><h2 style="font-weight: bolder; text-align: center;">Login</h2></div>
+        <div class="form-group">
+            <label for="email" style="color: #ffffff;">Email address:</label>
+            <input type="email" class="form-control" name="email" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <label for="password" style="color:#ffffff;">Password:</label>
+            <input type="password" class="form-control" name="password" placeholder="Password">
+        </div>
+        <button type="submit" class="btn" value="Login">Login</button>
+        <h4 style="color: #ffffff;">Not registered yet? <a href="/signup">Sign Up</a></h4>
+    </form>
+</div>
+
+{% endblock %}

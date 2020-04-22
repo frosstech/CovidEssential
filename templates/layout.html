@@ -1,0 +1,46 @@
+  <!doctype html>
+
+  <html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Covid Essentials</title>
+    <meta name="description" content="The HTML5 Herald">
+    <meta name="author" content="SitePoint">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="import" href="map.html">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+  </head>
+
+  <body>
+  
+  <!-- include the nav -->
+  {% include "includes/_nav.html" %}
+
+    <div class="container">
+      <main>
+          {% block content %}
+          {% endblock %}     
+      </main>
+    </div>
+
+    <div class="jumbotron" style="background-color:#E6E6FA;">  
+      <h1><strong> Covid Essentials</strong></h1>
+      <p> Powered by <strong>Zark</strong></p>
+      <iframe class="map" src="/map" width="100%" height="500" style="border-radius: 2px; "></iframe>
+    </div>
+
+  
+
+    <footer style="background-color: #E6E6FA;">
+      <h3 class="text-center">Covid Essentials</h3>
+      <p class="text-center">This is a website purely in concern with the people going through <br> 
+      the hard times during this inconsistency period, so make use of this valuably.</p>
+      <p class="text-center">- <strong>Tayalarajan T R &amp; Akash AJ</strong></p>
+      <p class="text-center"><strong><span class="glyphicon glyphicon-copyright-mark"></span> - 2020</strong>, reserved by covidessentials.in</p>
+    </footer>
+  </body>
+  </html>
